@@ -5,7 +5,7 @@ start:
 	npx babel-node src/bin/brain-games.js
 
 lint: 
-	npx eslint src/bin/brain-games.js
+	npx eslint
 
 publish: 
 	npm publish --dry-run

@@ -1,6 +1,6 @@
-import readlineSync from 'readline-sync';
+import * as games from './game_module';
 
 export default () => {
-  const userName = readlineSync.question('May I have your name? ');
-  return console.log(`Hello, ${userName}`);
+  const userName = games.askName();
+  games.greeting(userName);
 };

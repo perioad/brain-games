@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
-import * as even from '../even';
+import startGame from '../../even';
+import { emptyLine } from '../../game_module';
 
 console.log('Welcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".');
 
-even.emptyLine();
+emptyLine();
 
-even.check();
+startGame();

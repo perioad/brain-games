@@ -9,10 +9,10 @@ export default () => {
     const firstOperand = games.makeRandomNumber();
     const secondOperand = games.makeRandomNumber();
     const operator = games.makeRandomOperator();
-    games.question(firstOperand, operator, secondOperand);
-    const solvedExpression = games.solvedExpression(firstOperand, operator, secondOperand);
-    const userAnswer = games.toNumber(games.answer());
-    const isUserCorrect = games.isAnswerCorrectCalc(solvedExpression, userAnswer, userName);
+    games.askQuestion(firstOperand, operator, secondOperand);
+    const solvedExpression = games.solveExpression(firstOperand, operator, secondOperand);
+    const userAnswer = games.toNumber(games.getUserAnswer());
+    const isUserCorrect = games.isAnswerCorrect(solvedExpression, userAnswer, userName);
     console.log(isUserCorrect);
     games.emptyLine();
     if (isUserCorrect !== 'Correct!') {

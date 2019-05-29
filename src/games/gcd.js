@@ -6,11 +6,12 @@ export default () => {
   games.emptyLine();
   let correctAnswers = 0;
   for (let i = 1; i <= 3; i += 1) {
-    const number = games.makeRandomNumber();
-    games.askQuestion(number);
-    const answer = games.isNumberEven(number);
-    const userAnswer = games.getUserAnswer();
-    const isUserCorrect = games.isAnswerCorrect(answer, userAnswer, userName);
+    const number1 = games.makeRandomNumber();
+    const number2 = games.makeRandomNumber();
+    games.askQuestion(number1, number2);
+    const commonDivisor = games.findGreatCommonDivisor(number1, number2);
+    const userAnswer = games.toNumber(games.getUserAnswer());
+    const isUserCorrect = games.isAnswerCorrect(commonDivisor, userAnswer, userName);
     console.log(isUserCorrect);
     games.emptyLine();
     if (isUserCorrect !== 'Correct!') {

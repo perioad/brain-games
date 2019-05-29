@@ -21,3 +21,7 @@ $ npm i -g perioadhexletbraingames
 ### brain-gcd
 
 <a href="https://asciinema.org/a/TRR3S6GqXIGjiKs3TmKz3IlWf" target="_blank"><img src="https://asciinema.org/a/TRR3S6GqXIGjiKs3TmKz3IlWf.svg" /></a>
+
+### brain-progression
+
+<a href="https://asciinema.org/a/248996" target="_blank"><img src="https://asciinema.org/a/248996.svg" /></a>

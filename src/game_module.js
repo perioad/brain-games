@@ -22,7 +22,7 @@ export const isAnswerCorrect = (answer, userAnswer, name) => {
   return `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${name}!  You can do better!`;
 };
 
-export const makeRandomNumber = () => Math.floor(Math.random() * 101);
+export const makeRandomNumber = () => Math.floor(Math.random() * 100) + 1;
 
 export const makeRandomOperator = () => {
   const operatorNumber = Math.floor(Math.random() * 3);
@@ -58,4 +58,22 @@ export const findGreatCommonDivisor = (number1, number2) => {
     }
   }
   return commonDivisor;
+};
+
+export const placeOfMissedNumber = () => Math.floor(Math.random() * 8) + 2;
+
+export const diffOfArithmeticProgression = () => Math.floor(Math.random() * 30) + 1;
+
+export const numOfArithProgres = (firstNum, placeOfNum, diff) => firstNum + (placeOfNum - 1) * diff;
+
+export const makeArithmProgr = (firstNum, diff, numberOfMissedNum) => {
+  let result = '';
+  for (let i = 1; i <= 10; i += 1) {
+    if (i === numberOfMissedNum) {
+      result += '.. ';
+    } else {
+      result += `${numOfArithProgres(firstNum, i, diff)} `;
+    }
+  }
+  return result;
 };

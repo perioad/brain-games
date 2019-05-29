@@ -1,6 +1,6 @@
 {
   "name": "perioadhexletbraingames",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "brain-games",
   "main": "index.js",
   "bin": {

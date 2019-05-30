@@ -25,3 +25,7 @@ $ npm i -g perioadhexletbraingames
 ### brain-progression
 
 <a href="https://asciinema.org/a/248996" target="_blank"><img src="https://asciinema.org/a/248996.svg" /></a>
+
+### brain-prime
+
+<a href="https://asciinema.org/a/249163" target="_blank"><img src="https://asciinema.org/a/249163.svg" /></a>

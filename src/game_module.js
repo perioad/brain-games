@@ -12,6 +12,13 @@ export const greeting = (name) => {
   console.log(`Hello, ${name}!`);
 };
 
+export const askNameAndGreeting = () => {
+  const name = askName();
+  greeting(name);
+  emptyLine();
+  return name;
+};
+
 export const isAnswerCorrect = (answer, userAnswer, name) => {
   if (answer === userAnswer) {
     return 'Correct!';

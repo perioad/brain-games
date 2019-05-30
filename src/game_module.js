@@ -24,6 +24,8 @@ export const isAnswerCorrect = (answer, userAnswer, name) => {
 
 export const makeRandomNumber = () => Math.floor(Math.random() * 100) + 1;
 
+export const isNumberEven = number => (number % 2 === 0 ? 'yes' : 'no');
+
 export const makeRandomOperator = () => {
   const operatorNumber = Math.floor(Math.random() * 3);
   if (operatorNumber === 0) {
@@ -34,8 +36,6 @@ export const makeRandomOperator = () => {
   }
   return '*';
 };
-
-export const isNumberEven = number => (number % 2 === 0 ? 'yes' : 'no');
 
 export const solveExpression = (number1, operator, number2) => {
   if (operator === '-') {
@@ -76,4 +76,14 @@ export const makeArithmProgr = (firstNum, diff, numberOfMissedNum) => {
     }
   }
   return result;
+};
+
+export const isPrime = (number) => {
+  let counter = 0;
+  for (let i = 1; i <= number; i += 1) {
+    if (number % i === 0) {
+      counter += 1;
+    }
+  }
+  return counter === 2 ? 'yes' : 'no';
 };

@@ -1,22 +1,13 @@
 import * as games from '../game_module';
 
+const welcome = '\nWelcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".\n';
+
+const isNumberEven = num => (num % 2 === 0 ? 'yes' : 'no');
+
+const number = games.makeRandomNumber();
+
+const rightAnswer = isNumberEven(number);
+
 export default () => {
-  const userName = games.askNameAndGreeting();
-  let correctAnswers = 0;
-  for (let i = 1; i <= 3; i += 1) {
-    const number = games.makeRandomNumber();
-    games.askQuestion(number);
-    const answer = games.isNumberEven(number);
-    const userAnswer = games.getUserAnswer();
-    const isUserCorrect = games.isAnswerCorrect(answer, userAnswer, userName);
-    console.log(isUserCorrect);
-    games.emptyLine();
-    if (isUserCorrect !== 'Correct!') {
-      break;
-    }
-    correctAnswers += 1;
-    if (correctAnswers === 3) {
-      console.log(`Congratulations, ${userName}!`);
-    }
-  }
+  games.core(welcome, rightAnswer, number);
 };

@@ -1,25 +1,37 @@
 import * as games from '../game_module';
 
-export default () => {
-  const userName = games.askNameAndGreeting();
-  let correctAnswers = 0;
-  for (let i = 1; i <= 3; i += 1) {
-    const firstNumber = games.makeRandomNumber();
-    const placeOfMissedNumber = games.placeOfMissedNumber();
-    const difference = games.diffOfArithmeticProgression();
-    const arithmProgr = games.makeArithmProgr(firstNumber, difference, placeOfMissedNumber);
-    games.askQuestion(arithmProgr);
-    const userAnswer = games.toNumber(games.getUserAnswer());
-    const missedNumber = games.numOfArithProgres(firstNumber, placeOfMissedNumber, difference);
-    const isUserCorrect = games.isAnswerCorrect(missedNumber, userAnswer, userName);
-    console.log(isUserCorrect);
-    games.emptyLine();
-    if (isUserCorrect !== 'Correct!') {
-      break;
-    }
-    correctAnswers += 1;
-    if (correctAnswers === 3) {
-      console.log(`Congratulations, ${userName}!`);
+const welcome = '\nWelcome to the Brain Games!\nWhat number is missing in the progression?\n';
+
+
+const placeOfMissedNumber = () => Math.floor(Math.random() * 8) + 2;
+
+const diffOfArithmeticProgression = () => Math.floor(Math.random() * 30) + 1;
+
+const numOfArithProgres = (firstNum, placeOfNum, diff) => firstNum + (placeOfNum - 1) * diff;
+
+const makeArithmProgr = (firstNum, diff, numberOfMissedNum) => {
+  let result = '';
+  for (let i = 1; i <= 10; i += 1) {
+    if (i === numberOfMissedNum) {
+      result += '.. ';
+    } else {
+      result += `${numOfArithProgres(firstNum, i, diff)} `;
     }
   }
+  return result;
+};
+
+
+const firstNumber = games.makeRandomNumber();
+
+const placeOfMissedNum = placeOfMissedNumber();
+
+const difference = diffOfArithmeticProgression();
+
+const arithmProgr = makeArithmProgr(firstNumber, difference, placeOfMissedNum);
+
+const rightAnswer = numOfArithProgres(firstNumber, placeOfMissedNum, difference).toString();
+
+export default () => {
+  games.core(welcome, rightAnswer, arithmProgr);
 };

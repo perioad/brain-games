@@ -1,6 +1,7 @@
+import { cons } from 'hexlet-pairs';
 import * as games from '../game_module';
 
-const welcome = '\nWelcome to the Brain Games!\nAnswer "yes" if given number is prime. Otherwise answer "no".\n';
+const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (number) => {
   let counter = 0;
@@ -12,10 +13,13 @@ const isPrime = (number) => {
   return counter === 2 ? 'yes' : 'no';
 };
 
-const number = games.makeRandomNumber();
-
-const rightAnswer = isPrime(number);
+const generator = () => {
+  const number = games.makeRandomNumber();
+  const rightAnswer = isPrime(number);
+  const pair = cons(number, rightAnswer);
+  return pair;
+};
 
 export default () => {
-  games.core(welcome, rightAnswer, number);
+  games.core(task, generator);
 };

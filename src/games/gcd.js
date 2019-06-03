@@ -1,6 +1,7 @@
+import { cons } from 'hexlet-pairs';
 import * as games from '../game_module';
 
-const welcome = '\nWelcome to the Brain Games!\nFind the greatest common divisor of given numbers.\n';
+const task = 'Find the greatest common divisor of given numbers.';
 
 const findGreatCommonDivisor = (number1, number2) => {
   const biggestNumber = number1 > number2 ? number1 : number2;
@@ -13,14 +14,15 @@ const findGreatCommonDivisor = (number1, number2) => {
   return commonDivisor;
 };
 
-const number1 = games.makeRandomNumber();
-
-const number2 = games.makeRandomNumber();
-
-const expression = games.makeExpression(number1, number2);
-
-const rightAnswer = findGreatCommonDivisor(number1, number2).toString();
+const generator = () => {
+  const number1 = games.makeRandomNumber();
+  const number2 = games.makeRandomNumber();
+  const expression = games.makeExpression(number1, number2);
+  const rightAnswer = findGreatCommonDivisor(number1, number2).toString();
+  const pair = cons(expression, rightAnswer);
+  return pair;
+};
 
 export default () => {
-  games.core(welcome, rightAnswer, expression);
+  games.core(task, generator);
 };

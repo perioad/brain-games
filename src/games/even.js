@@ -1,13 +1,17 @@
+import { cons } from 'hexlet-pairs';
 import * as games from '../game_module';
 
-const welcome = '\nWelcome to the Brain Games!\nAnswer "yes" if number even otherwise answer "no".\n';
+const task = 'Answer "yes" if number even otherwise answer "no".';
 
 const isNumberEven = num => (num % 2 === 0 ? 'yes' : 'no');
 
-const number = games.makeRandomNumber();
-
-const rightAnswer = isNumberEven(number);
+const generator = () => {
+  const number = games.makeRandomNumber();
+  const rightAnswer = isNumberEven(number);
+  const pair = cons(number, rightAnswer);
+  return pair;
+};
 
 export default () => {
-  games.core(welcome, rightAnswer, number);
+  games.core(task, generator);
 };

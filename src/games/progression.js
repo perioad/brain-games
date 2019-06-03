@@ -1,13 +1,14 @@
+import { cons } from 'hexlet-pairs';
 import * as games from '../game_module';
 
-const welcome = '\nWelcome to the Brain Games!\nWhat number is missing in the progression?\n';
+const task = 'What number is missing in the progression?';
 
 
 const placeOfMissedNumber = () => Math.floor(Math.random() * 8) + 2;
 
 const diffOfArithmeticProgression = () => Math.floor(Math.random() * 30) + 1;
 
-const numOfArithProgres = (firstNum, placeOfNum, diff) => firstNum + (placeOfNum - 1) * diff;
+const numberOfArithProgres = (firstNum, placeOfNum, diff) => firstNum + (placeOfNum - 1) * diff;
 
 const makeArithmProgr = (firstNum, diff, numberOfMissedNum) => {
   let result = '';
@@ -15,23 +16,22 @@ const makeArithmProgr = (firstNum, diff, numberOfMissedNum) => {
     if (i === numberOfMissedNum) {
       result += '.. ';
     } else {
-      result += `${numOfArithProgres(firstNum, i, diff)} `;
+      result += `${numberOfArithProgres(firstNum, i, diff)} `;
     }
   }
   return result;
 };
 
-
-const firstNumber = games.makeRandomNumber();
-
-const placeOfMissedNum = placeOfMissedNumber();
-
-const difference = diffOfArithmeticProgression();
-
-const arithmProgr = makeArithmProgr(firstNumber, difference, placeOfMissedNum);
-
-const rightAnswer = numOfArithProgres(firstNumber, placeOfMissedNum, difference).toString();
+const generator = () => {
+  const firstNumber = games.makeRandomNumber();
+  const placeOfMissedNum = placeOfMissedNumber();
+  const difference = diffOfArithmeticProgression();
+  const arithmProgr = makeArithmProgr(firstNumber, difference, placeOfMissedNum);
+  const rightAnswer = numberOfArithProgres(firstNumber, placeOfMissedNum, difference).toString();
+  const pair = cons(arithmProgr, rightAnswer);
+  return pair;
+};
 
 export default () => {
-  games.core(welcome, rightAnswer, arithmProgr);
+  games.core(task, generator);
 };

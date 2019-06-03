@@ -1,6 +1,6 @@
 {
   "name": "perioadhexletbraingames",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "brain-games",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",

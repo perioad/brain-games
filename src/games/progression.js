@@ -1,37 +1,32 @@
 import { cons } from 'hexlet-pairs';
-import * as games from '../game_module';
+import * as utils from '../utils';
+import core from '../core';
 
 const task = 'What number is missing in the progression?';
 
+const getNumberOfProgression = (firstNum, placeOfNum, diff) => firstNum + placeOfNum * diff;
 
-const placeOfMissedNumber = () => Math.floor(Math.random() * 8) + 2;
-
-const diffOfArithmeticProgression = () => Math.floor(Math.random() * 30) + 1;
-
-const numberOfArithProgres = (firstNum, placeOfNum, diff) => firstNum + (placeOfNum - 1) * diff;
-
-const makeArithmProgr = (firstNum, diff, numberOfMissedNum) => {
+const makeProgression = (firstNum, diff, placeOfMissedNum) => {
   let result = '';
-  for (let i = 1; i <= 10; i += 1) {
-    if (i === numberOfMissedNum) {
+  for (let i = 0; i <= 9; i += 1) {
+    if (i === placeOfMissedNum) {
       result += '.. ';
     } else {
-      result += `${numberOfArithProgres(firstNum, i, diff)} `;
+      result = `${result}${getNumberOfProgression(firstNum, i, diff)} `;
     }
   }
   return result;
 };
 
-const generator = () => {
-  const firstNumber = games.makeRandomNumber();
-  const placeOfMissedNum = placeOfMissedNumber();
-  const difference = diffOfArithmeticProgression();
-  const arithmProgr = makeArithmProgr(firstNumber, difference, placeOfMissedNum);
-  const rightAnswer = numberOfArithProgres(firstNumber, placeOfMissedNum, difference).toString();
-  const pair = cons(arithmProgr, rightAnswer);
-  return pair;
+const generateQuestionAndRightAnswer = () => {
+  const firstNumber = utils.makeRandomNumber(1, 100);
+  const placeOfMissedNum = utils.makeRandomNumber(2, 9);
+  const difference = utils.makeRandomNumber(15, 30);
+  const question = makeProgression(firstNumber, difference, placeOfMissedNum);
+  const rightAnswer = getNumberOfProgression(firstNumber, placeOfMissedNum, difference).toString();
+  return cons(question, rightAnswer);
 };
 
 export default () => {
-  games.core(task, generator);
+  core(task, generateQuestionAndRightAnswer);
 };

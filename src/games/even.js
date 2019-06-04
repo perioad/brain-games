@@ -1,17 +1,17 @@
 import { cons } from 'hexlet-pairs';
-import * as games from '../game_module';
+import * as utils from '../utils';
+import core from '../core';
 
 const task = 'Answer "yes" if number even otherwise answer "no".';
 
-const isNumberEven = num => (num % 2 === 0 ? 'yes' : 'no');
+const isEven = number => (number % 2 === 0);
 
-const generator = () => {
-  const number = games.makeRandomNumber();
-  const rightAnswer = isNumberEven(number);
-  const pair = cons(number, rightAnswer);
-  return pair;
+const generateQuestionAndRightAnswer = () => {
+  const question = utils.makeRandomNumber(1, 100);
+  const rightAnswer = utils.booleanToYesOrNo(isEven(question));
+  return cons(question, rightAnswer);
 };
 
 export default () => {
-  games.core(task, generator);
+  core(task, generateQuestionAndRightAnswer);
 };

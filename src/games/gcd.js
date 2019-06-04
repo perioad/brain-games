@@ -1,5 +1,6 @@
 import { cons } from 'hexlet-pairs';
-import * as games from '../game_module';
+import * as utils from '../utils';
+import core from '../core';
 
 const task = 'Find the greatest common divisor of given numbers.';
 
@@ -14,15 +15,14 @@ const findGreatCommonDivisor = (number1, number2) => {
   return commonDivisor;
 };
 
-const generator = () => {
-  const number1 = games.makeRandomNumber();
-  const number2 = games.makeRandomNumber();
-  const expression = games.makeExpression(number1, number2);
+const generateQuestionAndRightAnswer = () => {
+  const number1 = utils.makeRandomNumber(1, 100);
+  const number2 = utils.makeRandomNumber(1, 100);
+  const question = utils.makeExpression(number1, number2);
   const rightAnswer = findGreatCommonDivisor(number1, number2).toString();
-  const pair = cons(expression, rightAnswer);
-  return pair;
+  return cons(question, rightAnswer);
 };
 
 export default () => {
-  games.core(task, generator);
+  core(task, generateQuestionAndRightAnswer);
 };

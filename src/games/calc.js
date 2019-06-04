@@ -1,10 +1,11 @@
 import { cons } from 'hexlet-pairs';
-import * as games from '../game_module';
+import * as utils from '../utils';
+import core from '../core';
 
 const task = 'What is the result of the expression?';
 
 const makeRandomOperator = () => {
-  const operatorNumber = Math.floor(Math.random() * 3);
+  const operatorNumber = utils.makeRandomNumber(0, 2);
   if (operatorNumber === 0) {
     return '-';
   }
@@ -15,25 +16,25 @@ const makeRandomOperator = () => {
 };
 
 const solveExpression = (number1, operation, number2) => {
-  if (operation === '-') {
-    return number1 - number2;
+  switch (operation) {
+    case '-':
+      return number1 - number2;
+    case '+':
+      return number1 + number2;
+    default:
+      return number1 * number2;
   }
-  if (operation === '+') {
-    return number1 + number2;
-  }
-  return number1 * number2;
 };
 
-const generator = () => {
-  const number1 = games.makeRandomNumber();
-  const number2 = games.makeRandomNumber();
-  const operation = makeRandomOperator();
-  const expression = games.makeExpression(number1, operation, number2);
-  const solvedExpression = solveExpression(number1, operation, number2).toString();
-  const pair = cons(expression, solvedExpression);
-  return pair;
+const generateQuestionAndRightAnswer = () => {
+  const number1 = utils.makeRandomNumber(0, 100);
+  const number2 = utils.makeRandomNumber(0, 100);
+  const operator = makeRandomOperator();
+  const question = utils.makeExpression(number1, operator, number2);
+  const rightAnswer = solveExpression(number1, operator, number2).toString();
+  return cons(question, rightAnswer);
 };
 
 export default () => {
-  games.core(task, generator);
+  core(task, generateQuestionAndRightAnswer);
 };

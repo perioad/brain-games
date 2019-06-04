@@ -1,8 +1,6 @@
 import { car, cdr } from 'hexlet-pairs';
 import readlineSync from 'readline-sync';
 
-const emptyLine = () => console.log('');
-
 const askName = () => readlineSync.question('May I have your name? ');
 
 const askQuestion = expression => console.log(`Question: ${expression}`);
@@ -25,28 +23,21 @@ const isAnswerCorrect = (answer, userAnswer, name) => {
 
 const welcome = task => console.log(`\nWelcome to the Brain Games!\n${task}\n`);
 
-export const askNameAndGreeting = () => {
-  const name = askName();
-  greeting(name);
-  emptyLine();
-  return name;
-};
-
-export const makeRandomNumber = () => Math.floor(Math.random() * 100) + 1;
-
-export const makeExpression = (number1, operator = '', number2 = '') => `${number1} ${operator} ${number2}`;
-
-export const core = (task, generator) => {
+export default (task, generateQuestionAndRightAnswer) => {
   welcome(task);
-  const userName = askNameAndGreeting();
+  const userName = askName();
+  greeting(userName);
+  console.log('');
   let correctAnswers = 0;
   for (let i = 1; i <= 3; i += 1) {
-    const pair = generator();
-    askQuestion(car(pair));
+    const pair = generateQuestionAndRightAnswer();
+    const question = car(pair);
+    const rightAnswer = cdr(pair);
+    askQuestion(question);
     const userAnswer = getUserAnswer();
-    const isUserCorrect = isAnswerCorrect(cdr(pair), userAnswer, userName);
+    const isUserCorrect = isAnswerCorrect(rightAnswer, userAnswer, userName);
     console.log(isUserCorrect);
-    emptyLine();
+    console.log('');
     if (isUserCorrect !== 'Correct!') {
       break;
     }

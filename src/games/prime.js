@@ -1,5 +1,5 @@
 import { cons } from 'hexlet-pairs';
-import * as utils from '../utils';
+import makeRandomNumber from '../utils';
 import core from '../core';
 
 const task = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -10,13 +10,16 @@ const isPrime = (number) => {
     if (number % i === 0) {
       counter += 1;
     }
+    if (counter > 1) {
+      return false;
+    }
   }
   return counter === 1;
 };
 
 const generateQuestionAndRightAnswer = () => {
-  const question = utils.makeRandomNumber(1, 100);
-  const rightAnswer = utils.booleanToYesOrNo(isPrime(question));
+  const question = makeRandomNumber(1, 100);
+  const rightAnswer = isPrime(question) ? 'yes' : 'no';
   return cons(question, rightAnswer);
 };
 

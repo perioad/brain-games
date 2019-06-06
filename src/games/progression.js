@@ -1,29 +1,29 @@
 import { cons } from 'hexlet-pairs';
-import * as utils from '../utils';
+import makeRandomNumber from '../utils';
 import core from '../core';
 
 const task = 'What number is missing in the progression?';
 
-const getTermOfProgression = (initialTerm, placeOfTerm, diff) => initialTerm + placeOfTerm * diff;
+const progressionLength = 10;
 
-const makeProgression = (initialTerm, diff, placeOfMissedTerm) => {
+const makeProgressionWithoutOneTerm = (initialTerm, diff, missingTermPlace) => {
   let result = '';
-  for (let i = 0; i <= 9; i += 1) {
-    if (i === placeOfMissedTerm) {
-      result += '.. ';
+  for (let i = 1; i <= progressionLength; i += 1) {
+    if (i === missingTermPlace) {
+      result = `${result}.. `;
     } else {
-      result = `${result}${getTermOfProgression(initialTerm, i, diff)} `;
+      result = `${result}${initialTerm + (i - 1) * diff} `;
     }
   }
   return result;
 };
 
 const generateQuestionAndRightAnswer = () => {
-  const initalTerm = utils.makeRandomNumber(1, 100);
-  const placeOfMissedTerm = utils.makeRandomNumber(2, 9);
-  const difference = utils.makeRandomNumber(15, 30);
-  const question = makeProgression(initalTerm, difference, placeOfMissedTerm);
-  const rightAnswer = getTermOfProgression(initalTerm, placeOfMissedTerm, difference).toString();
+  const initialTerm = makeRandomNumber(1, 100);
+  const missingTermPlace = makeRandomNumber(2, progressionLength);
+  const difference = makeRandomNumber(15, 30);
+  const question = makeProgressionWithoutOneTerm(initialTerm, difference, missingTermPlace);
+  const rightAnswer = `${initialTerm + (missingTermPlace - 1) * difference}`;
   return cons(question, rightAnswer);
 };
 

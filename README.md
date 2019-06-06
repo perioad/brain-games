@@ -12,20 +12,20 @@ $ npm i -g perioadhexletbraingames
 
 ### brain-even
 
-<a href="https://asciinema.org/a/ZJXOYnvWayMnpmFDmzHAuGDyz" target="_blank"><img src="https://asciinema.org/a/ZJXOYnvWayMnpmFDmzHAuGDyz.svg" /></a>
+[![asciicast](https://asciinema.org/a/250168.svg)](https://asciinema.org/a/250168)
 
 ### brain-calc
 
-<a href="https://asciinema.org/a/6NkqqJeZmk1V5rsAMGpsc6fyE" target="_blank"><img src="https://asciinema.org/a/6NkqqJeZmk1V5rsAMGpsc6fyE.svg" /></a>
+[![asciicast](https://asciinema.org/a/250169.svg)](https://asciinema.org/a/250169)
 
 ### brain-gcd
 
-<a href="https://asciinema.org/a/TRR3S6GqXIGjiKs3TmKz3IlWf" target="_blank"><img src="https://asciinema.org/a/TRR3S6GqXIGjiKs3TmKz3IlWf.svg" /></a>
+[![asciicast](https://asciinema.org/a/250170.svg)](https://asciinema.org/a/250170)
 
 ### brain-progression
 
-<a href="https://asciinema.org/a/248996" target="_blank"><img src="https://asciinema.org/a/248996.svg" /></a>
+[![asciicast](https://asciinema.org/a/250172.svg)](https://asciinema.org/a/250172)
 
 ### brain-prime
 
-<a href="https://asciinema.org/a/249163" target="_blank"><img src="https://asciinema.org/a/249163.svg" /></a>
+[![asciicast](https://asciinema.org/a/250174.svg)](https://asciinema.org/a/250174)

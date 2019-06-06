@@ -4,26 +4,26 @@ import core from '../core';
 
 const task = 'What number is missing in the progression?';
 
-const getNumberOfProgression = (firstNum, placeOfNum, diff) => firstNum + placeOfNum * diff;
+const getTermOfProgression = (initialTerm, placeOfTerm, diff) => initialTerm + placeOfTerm * diff;
 
-const makeProgression = (firstNum, diff, placeOfMissedNum) => {
+const makeProgression = (initialTerm, diff, placeOfMissedTerm) => {
   let result = '';
   for (let i = 0; i <= 9; i += 1) {
-    if (i === placeOfMissedNum) {
+    if (i === placeOfMissedTerm) {
       result += '.. ';
     } else {
-      result = `${result}${getNumberOfProgression(firstNum, i, diff)} `;
+      result = `${result}${getTermOfProgression(initialTerm, i, diff)} `;
     }
   }
   return result;
 };
 
 const generateQuestionAndRightAnswer = () => {
-  const firstNumber = utils.makeRandomNumber(1, 100);
-  const placeOfMissedNum = utils.makeRandomNumber(2, 9);
+  const initalTerm = utils.makeRandomNumber(1, 100);
+  const placeOfMissedTerm = utils.makeRandomNumber(2, 9);
   const difference = utils.makeRandomNumber(15, 30);
-  const question = makeProgression(firstNumber, difference, placeOfMissedNum);
-  const rightAnswer = getNumberOfProgression(firstNumber, placeOfMissedNum, difference).toString();
+  const question = makeProgression(initalTerm, difference, placeOfMissedTerm);
+  const rightAnswer = getTermOfProgression(initalTerm, placeOfMissedTerm, difference).toString();
   return cons(question, rightAnswer);
 };
 

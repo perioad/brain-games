@@ -10,9 +10,9 @@ const makeProgressionWithoutOneTerm = (initialTerm, diff, missingTermPlace) => {
   let result = '';
   for (let i = 1; i <= progressionLength; i += 1) {
     if (i === missingTermPlace) {
-      result = `${result}.. `;
+      result = `${result} ..`;
     } else {
-      result = `${result}${initialTerm + (i - 1) * diff} `;
+      result = `${result} ${initialTerm + (i - 1) * diff}`;
     }
   }
   return result;

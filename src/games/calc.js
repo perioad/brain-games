@@ -4,27 +4,22 @@ import core from '../core';
 
 const task = 'What is the result of the expression?';
 
+const operators = '-+*';
+
 const makeRandomOperator = () => {
-  const listOfOperators = '-+*';
-  const maxIndex = listOfOperators.length - 1;
+  const maxIndex = operators.length - 1;
   const indexOfOperator = makeRandomNumber(0, maxIndex);
-  if (indexOfOperator === 0) {
-    return '-';
-  }
-  if (indexOfOperator === 1) {
-    return '+';
-  }
-  return '*';
+  return operators[indexOfOperator];
 };
 
-const solveExpression = (a, operator, b) => {
+const solveExpression = (operator, a, b) => {
   switch (operator) {
     case '-':
-      return `${a - b}`;
+      return a - b;
     case '+':
-      return `${a + b}`;
+      return a + b;
     default:
-      return `${a * b}`;
+      return a * b;
   }
 };
 
@@ -33,7 +28,7 @@ const generateQuestionAndRightAnswer = () => {
   const rightOperand = makeRandomNumber(0, 100);
   const operator = makeRandomOperator();
   const question = `${leftOperand} ${operator} ${rightOperand}`;
-  const rightAnswer = solveExpression(leftOperand, operator, rightOperand);
+  const rightAnswer = solveExpression(operator, leftOperand, rightOperand).toString();
   return cons(question, rightAnswer);
 };
 

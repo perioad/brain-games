@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import askName from '../games';
+import askName from './index';
 
 askName();

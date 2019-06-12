@@ -6,13 +6,7 @@ const task = 'What is the result of the expression?';
 
 const operators = '-+*';
 
-const makeRandomOperator = () => {
-  const maxIndex = operators.length - 1;
-  const indexOfOperator = makeRandomNumber(0, maxIndex);
-  return operators[indexOfOperator];
-};
-
-const solveExpression = (operator, a, b) => {
+const solveExpression = (a, b, operator) => {
   switch (operator) {
     case '-':
       return a - b;
@@ -24,11 +18,13 @@ const solveExpression = (operator, a, b) => {
 };
 
 const generateQuestionAndRightAnswer = () => {
+  const maxIndex = operators.length - 1;
+  const indexOfOperator = makeRandomNumber(0, maxIndex);
+  const operator = operators[indexOfOperator];
   const leftOperand = makeRandomNumber(0, 100);
   const rightOperand = makeRandomNumber(0, 100);
-  const operator = makeRandomOperator();
   const question = `${leftOperand} ${operator} ${rightOperand}`;
-  const rightAnswer = solveExpression(operator, leftOperand, rightOperand).toString();
+  const rightAnswer = solveExpression(leftOperand, rightOperand, operator).toString();
   return cons(question, rightAnswer);
 };
 

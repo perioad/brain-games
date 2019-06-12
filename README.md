@@ -3,7 +3,8 @@
 ## installation
 
 ```sh
-$ npm i -g perioadhexletbraingames
+$ make publish
+$ npm link
 ```
 
 <hr>

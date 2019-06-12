@@ -20,7 +20,7 @@ const makeProgressionWithoutOneTerm = (initialTerm, diff, missingTermPlace) => {
 
 const generateQuestionAndRightAnswer = () => {
   const initialTerm = makeRandomNumber(1, 100);
-  const missingTermPlace = makeRandomNumber(2, progressionLength);
+  const missingTermPlace = makeRandomNumber(1, progressionLength);
   const difference = makeRandomNumber(15, 30);
   const question = makeProgressionWithoutOneTerm(initialTerm, difference, missingTermPlace);
   const rightAnswer = `${initialTerm + (missingTermPlace - 1) * difference}`;

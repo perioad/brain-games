@@ -16,7 +16,8 @@ export default (task, generateQuestionAndRightAnswer) => {
     console.log(`Question: ${question}`);
     const userAnswer = readlineSync.question('Your answer: ');
     if (rightAnswer !== userAnswer) {
-      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\nLet's try again, ${userName}! You can do better!`);
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${rightAnswer}'.\n`);
+      console.log(`Let's try again, ${userName}! You can do better!`);
       return;
     }
     console.log('Correct!\n');

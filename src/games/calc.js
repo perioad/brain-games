@@ -18,8 +18,7 @@ const solveExpression = (a, b, operator) => {
 };
 
 const generateQuestionAndRightAnswer = () => {
-  const maxIndex = operators.length - 1;
-  const indexOfOperator = makeRandomNumber(0, maxIndex);
+  const indexOfOperator = makeRandomNumber(0, operators.length - 1);
   const operator = operators[indexOfOperator];
   const leftOperand = makeRandomNumber(0, 100);
   const rightOperand = makeRandomNumber(0, 100);
